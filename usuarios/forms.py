@@ -5,14 +5,14 @@ class LoginForms(forms.Form):
     label='Nome de login',
     required=True,
     max_length=100,
-    widget=forms.PasswordInput(
+    widget=forms.TextInput(
       attrs={
         'class': 'form-control',
         'placeholder': 'Digite seu usuario',
       }
     )
   )
-  sennha=forms.CharField(
+  senha=forms.CharField(
     label='Senha',
     required=True,
     max_length=70,
@@ -20,6 +20,52 @@ class LoginForms(forms.Form):
       attrs={
         'class': 'form-control',
         'placeholder': 'Digite sua senha',
+      }
+    )
+  )
+
+class CadastroFrom(forms.Form):
+  nome_usuario=forms.CharField(
+    label='Nome de usuario',
+    required=True,
+    max_length=100,
+    widget=forms.TextInput(
+      attrs={
+        'class': 'form-control',
+        'placeholder': 'Digite seu usuario',
+      }
+    )
+  )
+  email=forms.EmailField(
+    label='Email',
+    required=True,
+    max_length=100,
+    widget=forms.EmailInput(
+      attrs={
+        'class': 'form-control',
+        'placeholder': 'Digite seu email',
+      }
+    )
+  )
+  senha=forms.CharField(
+    label='Senha',
+    required=True,
+    max_length=70,
+    widget=forms.PasswordInput(
+      attrs={
+        'class': 'form-control',
+        'placeholder': 'Digite sua senha',
+      }
+    )
+  )
+  repita_senha=forms.CharField(
+    label='Repita sua Senha',
+    required=True,
+    max_length=70,
+    widget=forms.PasswordInput(
+      attrs={
+        'class': 'form-control',
+        'placeholder': 'Digite sua senha novamente',
       }
     )
   )
