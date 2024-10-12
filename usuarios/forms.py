@@ -69,3 +69,12 @@ class CadastroFrom(forms.Form):
       }
     )
   )
+
+  def clean_nome_usuario(self):
+    nome = self.cleaned_data.get('nome_usuario')
+    if nome:
+      nome = nome.strip()
+      if ' ' in nome:
+        raise forms.ValidationError('O nome de usuário não pode conter espaços')
+      else:
+        return nome
