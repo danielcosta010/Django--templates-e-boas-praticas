@@ -75,6 +75,16 @@ class CadastroFrom(forms.Form):
     if nome:
       nome = nome.strip()
       if ' ' in nome:
-        raise forms.ValidationError('O nome de usuário não pode conter espaços')
+        raise forms.ValidationError('O nome de usuário não pode conter espaços.')
       else:
         return nome
+        
+  def clean_repita_senha(self):
+     senha = self.cleaned_data.get('senha')
+     repita_senha = self.cleaned_data.get('repita_senha')
+     if senha and repita_senha:
+      if senha != repita_senha:
+        raise forms.ValidationError('As senhas não podem ser iguais')
+      else:
+        return repita_senha
+        
